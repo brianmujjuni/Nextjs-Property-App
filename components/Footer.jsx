@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/assets/images/logo.png";
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-gray-200 py-4 mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
@@ -20,7 +21,7 @@ export default function Footer() {
         </div>
         <div>
           <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; 2024 PropertyPulse. All rights reserved.
+            &copy; {currentYear} PropertyPulse. All rights reserved.
           </p>
         </div>
       </div>
