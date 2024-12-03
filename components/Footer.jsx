@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/assets/images/logo-white.png";
+import Logo from "@/assets/images/logo.png";
 export default function Footer() {
   return (
     <footer className="bg-gray-200 py-4 mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
         <div className="mb-4 md:mb-0">
-          <Image src={Logo} alt="propery-logo" />
+          <Image src={Logo} alt="propery-logo" className="h-8 w-auto" />
         </div>
         <div className="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0">
           <ul className="flex space-x-4">
