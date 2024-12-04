@@ -46,10 +46,10 @@ export default function PropertyCard({ property }) {
         </div>
         <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
           <p>
-            <i className="fa-solid fa-money-bill"></i> Weekly
+            <FaMoneyBill className="md:hidden lg:inline" /> Weekly
           </p>
           <p>
-            <i className="fa-solid fa-money-bill"></i> Monthly
+            <FaMoneyBill className="md:hidden lg:inline" /> Monthly
           </p>
         </div>
         <div className="border border-gray-100 mb-5"></div>
