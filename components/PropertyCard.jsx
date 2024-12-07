@@ -8,6 +8,16 @@ import {
   FaMapMarker,
 } from "react-icons/fa";
 export default function PropertyCard({ property }) {
+  const getRatesDisplay = () => {
+    const { rates } = property;
+    if (rates.monthly) {
+      return `$${rates.monthly.toLocaleString()}/mo`;
+    } else if (rates.weekly) {
+      return `$${rates.weekly.toLocaleString()}/wk`;
+    } else if (rates.nightly) {
+      return `$${rates.monthly.toLocaleString()}/night`;
+    }
+  };
   return (
     <div className="rounded-xl shadow-md relative">
       <Image
@@ -24,7 +34,7 @@ export default function PropertyCard({ property }) {
           <h3 className="text-xl font-bold">{property.name}</h3>
         </div>
         <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-          $4,200/mo
+          {getRatesDisplay()}
         </h3>
         <div className="flex justify-center gap-4 text-gray-500 mb-4">
           <p>
@@ -55,7 +65,7 @@ export default function PropertyCard({ property }) {
         <div className="border border-gray-100 mb-5"></div>
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <i className="fa-solid fa-location-dot text-lg text-orange-700"></i>
+            <FaMapMarker className="text-yellow-700 mt-1" />
             <span className="text-orange-700">
               {property.location.city} {property.location.state}
             </span>
