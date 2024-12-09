@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function PropertiesDetails() {
+export default function PropertiesDetails({ property }) {
   return (
     <main>
       <div class="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
