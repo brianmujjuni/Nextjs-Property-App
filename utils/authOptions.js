@@ -23,9 +23,9 @@ export const authOptions = {
       //return true to allow sign in
     },
     //Session callback function that modifies the session object
-    async session({session}){
-        // Get user from database
-        //Assign user id from the session
-    }
+    async session({ session }) {
+      // Get user from database
+      //Assign user id from the session
+    },
   },
 };
