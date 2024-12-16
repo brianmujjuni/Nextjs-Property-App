@@ -161,6 +161,7 @@ export default function Navbar() {
                   >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
+
                     <Image
                       className="h-8 w-8 rounded-full"
                       src={profileDefault}

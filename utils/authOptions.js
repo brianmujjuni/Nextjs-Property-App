@@ -24,6 +24,7 @@ export const authOptions = {
       const userExists = await User.findOne({ email: profile.email });
       //if not create user
       if (!userExists) {
+        console.log(profile);
         //truncate username if long
         const username = profile.name.slice(0, 20);
         await User.create({
@@ -38,7 +39,11 @@ export const authOptions = {
     //Session callback function that modifies the session object
     async session({ session }) {
       // Get user from database
+      const user = await User.findOne({ email: session.user.email });
       //Assign user id from the session
+      session.user.id = user._id.toString();
+      //return session
+      return session;
     },
   },
 };
