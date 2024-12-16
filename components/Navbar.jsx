@@ -6,13 +6,7 @@ import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo-white.png";
 import profileDefault from "@/assets/images/profile.png";
 import { FaGoogle } from "react-icons/fa";
-import {
-  signin,
-  sinOut,
-  useSession,
-  getProviders,
-  signIn,
-} from "next-auth/react";
+import { signIn, sinOut, useSession, getProviders } from "next-auth/react";
 export default function Navbar() {
   const { data: session } = useSession();
 
@@ -22,6 +16,7 @@ export default function Navbar() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const pathName = usePathname();
+
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
@@ -109,15 +104,17 @@ export default function Navbar() {
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
                 {providers &&
-                  Object.values(providers).map((provider, index) => {
+                  Object.values(providers).map((provider, index) => (
                     <button
                       onClick={() => signIn(provider.id)}
+                      key={index}
                       className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                     >
-                      <FaGoogle key={index} className="text-white mr-2" />
+                      <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
-                    </button>;
-                  })}
+                    </button>
+                  ))}
+                ;
               </div>
             </div>
           )}

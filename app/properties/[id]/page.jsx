@@ -9,7 +9,7 @@ export default async function PropertyPage({ params }) {
   const property = await Property.findById(params.id);
   return (
     <>
-      <PropertyHeaderImage image={property?.images[0]} />
+      <PropertyHeaderImage image={property.images[0]} />
       <section>
         <div className="conatainer m-auto py-6 px-6">
           <Link

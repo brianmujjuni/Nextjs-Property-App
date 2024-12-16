@@ -2,7 +2,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
-    {
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: {
@@ -12,7 +12,7 @@ export const authOptions = {
           respone_type: "code",
         },
       },
-    },
+    }),
   ],
   callback: {
     //Invoked on successful signup
