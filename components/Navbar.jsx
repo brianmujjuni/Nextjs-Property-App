@@ -6,7 +6,13 @@ import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo-white.png";
 import profileDefault from "@/assets/images/profile.png";
 import { FaGoogle } from "react-icons/fa";
-import { signIn, sinOut, useSession, getProviders } from "next-auth/react";
+import {
+  signIn,
+  sinOut,
+  useSession,
+  getProviders,
+  signOut,
+} from "next-auth/react";
 export default function Navbar() {
   const { data: session } = useSession();
   const profileImage = session?.user?.image;
@@ -206,6 +212,10 @@ export default function Navbar() {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut();
+                      }}
                     >
                       Sign Out
                     </button>
