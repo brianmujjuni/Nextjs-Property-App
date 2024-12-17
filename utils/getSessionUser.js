@@ -1,13 +1,20 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@utils/authOptions";
+import { authOptions } from "@/utils/authOptions";
 
 export const getSessionUser = async () => {
-  const session = getServerSession(authOptions);
-  if (!session || !session.user) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session || !session.user) {
+      return null;
+    }
+
+    return {
+      user: session.user,
+      userId: session.user.id,
+    };
+  } catch (error) {
+    console.error(error);
     return null;
   }
-  return {
-    user: session.user,
-    userId: session.user.id,
-  };
 };
