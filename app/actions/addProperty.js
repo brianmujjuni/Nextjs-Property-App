@@ -15,10 +15,7 @@ async function addProperty(formData) {
   const { userId } = sessionUser;
 
   const amenities = formData.getAll("amenities");
-  const images = formData
-    .getAll("images")
-    .filter((image) => image.name !== "")
-    
+  const images = formData.getAll("images").filter((image) => image.name !== "");
 
   const propertyData = {
     owner: userId,
@@ -45,8 +42,24 @@ async function addProperty(formData) {
       email: formData.get("seller_info.email"),
       phone: formData.get("seller_info.phone"),
     },
-    images,
   };
+  const imageUrls = [];
+
+  for (const imageFile of images) {
+    const imageBuffer = await imageFile.arrayBuffer();
+    const imageArray = Array.from(new Uint8Array(imageBuffer));
+    const imageData = Buffer.from(imageArray);
+    //convert to base64
+    const imageBase64 = imageData.toString("base64");
+    //Make request to cloudinary
+    const result = await cloudninary.uploader.upload(
+      `data:image/png;base64,${imageBase64}`,
+      { folder: "propertyPulse" }
+    );
+    imageUrls.push(result.secure_url);
+  }
+  propertyData.images = imageUrls;
+
   const newProperty = new Property(propertyData);
   await newProperty.save();
   revalidatePath("/", "layout");
