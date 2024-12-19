@@ -4,6 +4,7 @@ import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import cloudninary from "@/utils/cloudinary";
 
 async function addProperty(formData) {
   await connectDB();
@@ -17,7 +18,7 @@ async function addProperty(formData) {
   const images = formData
     .getAll("images")
     .filter((image) => image.name !== "")
-    .map((image) => image.name);
+    
 
   const propertyData = {
     owner: userId,
