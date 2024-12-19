@@ -6,7 +6,7 @@ export default function PropertyHeaderImage({ image }) {
       <div className="container-xl m-auto">
         <div className="grid grid-cols-1">
           <Image
-            src={`/images/properties/${image}`}
+            src={image}
             className="object-cover h-[400px] w-full"
             alt=""
             width={0}
